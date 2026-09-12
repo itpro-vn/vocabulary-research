@@ -1,5 +1,7 @@
 # Vocabulary-size test algorithm — research report
 
+> 🎯 **For Implementation & Production Architecture:** See [ROADMAP_ARCHITECTURE.md](ROADMAP_ARCHITECTURE.md) for the executive blueprint, system architecture, decoupled modules, and team roadmap approved by the Strategic Advisor.
+
 Báo cáo được cập nhật theo từng iteration của Deli Deep. Các claim có nguồn được kiểm tra theo từng artifact; riêng trang Preply trong callback này vẫn có endpoint trả HTTP 403 nên các phần chưa xác minh được giữ dưới dạng gap. Phương pháp Preply được đối chiếu qua bản proxy khi fetch được và luôn được ghi rõ là nguồn vendor/provisional khi chưa có calibration độc lập.
 
 | # | Chủ đề | File |
