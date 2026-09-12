@@ -1,9 +1,16 @@
 # Strategic Architecture & Implementation Roadmap: Vocabulary Size Estimation
 
-> **Document Version:** 1.0.0  
-> **Status:** Approved Strategy & Architecture Blueprint  
+> **Document Version:** 1.1.0  
+> **Status:** Strategy Approved · Implementation Architecture Conditionally Approved (Pending P0 Technical Specifications)  
 > **Target Audience:** Engineering Leads, PMs, Backend, Flutter Mobile/Web, Data & Psychometrics Teams (`itpro-vn`)  
-> **Based on:** 65 Deli Deep Research Iterations + Advisory Strategic Review (GPT-6-Astra)
+> **Strategic Advisor Review:** Reviewed by GPT-6-Astra (Conditional Sign-off with P0 Action Items)
+
+---
+
+## ⚠️ Strategic Advisor Sign-off Status & Guardrails
+* **Strategy & Core Principles:** **APPROVED** (Receptive construct definition, frequency-stratified baseline before CAT, LLM as drafting assistant only, telemetry-driven offline calibration).
+* **Production Implementation Architecture:** **CONDITIONALLY APPROVED** (Requires resolution of 5 P0 Specifications below before locking scoring contracts or public scoring claims).
+* **Public Beta with "Vocabulary Size" Claims:** **NOT APPROVED YET** (Requires empirical validation against an independent reference test with characterized measurement error).
 
 ---
 
@@ -150,14 +157,31 @@ To scientifically validate that our engine outperforms commercial heuristic test
 
 ## 6. Engineering Action Plan & Team Allocation
 
-* **Product / PM (`pms`):**
-  - Lock user experience flow: 5–8 min assessment cap, intuitive score reporting explaining uncertainty intervals.
-* **Backend (`backend`):**
-  - Implement the 5 decoupled modules with clean REST/gRPC interfaces.
-  - Implement two-stage stratified scoring engine with Bayesian EAP fallback.
-* **Frontend (`flutter-mobile` & `flutter-web`):**
-  - Build responsive, distraction-free assessment UI with millisecond-precision response capture.
-  - Present results with visual confidence intervals and CEFR / vocabulary level mapping.
-* **Data / ML / Psychometrics:**
-  - Curate 1,200-item cold-start bank using frequency manifests.
-  - Set up automated offline calibration scripts (Rasch / 2PL IRT fitting).
+### Immediate Permitted Scope vs. Blocked Scope
+* **Backend:** Permitted to build Item Registry, authoring workflows, and telemetry pipelines. *BLOCKED from locking final scoring APIs or adaptive routing logic until P0.1, P0.2, and P0.4 contracts are signed off.*
+* **Frontend (Flutter Mobile/Web):** Permitted to build UI prototypes, accessibility flows, and timing/reconnect spikes. *BLOCKED from hardcoding final score labels or confidence interval visualizations.*
+* **Data / Psychometrics:** Permitted to curate initial lexical frames and draft item bank. *BLOCKED from claiming calibrated IRT parameters until empirical pilot data is gathered.*
+* **Product / PMs:** Permitted to design consent flows and study protocols. *BLOCKED from marketing "±X% accuracy" claims.*
+
+---
+
+## 7. Mandatory P0 Specifications Required for Final Implementation Sign-off
+
+Before production implementation and public beta release, the team must produce and freeze the following formal specifications:
+
+1. **`MEASUREMENT_SPEC.md` (P0.1):**
+   - Precise definition of Lexical Universe size ($N$), lemma/headword boundary rules, and handling of polysemy (lemma vs. lemma-sense).
+   - Mathematical specification of the primary estimand:
+     $$\widehat{V} = \sum_{h=1}^H N_h \cdot \widehat{p}_h$$
+     with an explicit operational definition of $\widehat{p}_h$ (recognition probability vs. raw percent correct).
+2. **`SAMPLING_AND_ESTIMATION_SPEC.md` (P0.2):**
+   - Design-based vs. model-based sampling weights and extrapolation rules for unobserved strata.
+   - Simulation analysis demonstrating coverage and bias across varied proficiency profiles.
+3. **`SCORING_SPEC_V0.md` (P0.3):**
+   - Transparent guessing models and sensitivity checks; distinction between Credible Interval, Confidence Interval, and CSEM on count scale vs. latent $\theta$.
+4. **`API_AND_STATE_MACHINE_SPEC.md` (P0.4):**
+   - Session lifecycle state machine (`created` -> `in_progress` -> `completed` / `expired` / `invalidated`).
+   - Monotonic clock latency capture contract with client device telemetry; idempotent event submission schemas.
+5. **`ARTIFACT_LINEAGE_AND_GOVERNANCE.md` (P0.5):**
+   - Immutable artifact lineage tracking ensuring 100% reproducible re-scoring of any historical session across versioned models and item bank snapshots.
+
