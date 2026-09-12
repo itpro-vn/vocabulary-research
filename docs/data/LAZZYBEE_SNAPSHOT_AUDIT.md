@@ -1,4 +1,6 @@
-# LazzyBee database: verified snapshot and integration decision
+# LazzyBee learning database: verified snapshot and integration decision
+
+> **Scope clarification:** this audit and its machine-readable evidence apply only to the earlier 3,885-record learning snapshot. The owner has separately supplied the full 42,497-record server export; see [current server-dictionary status](SERVER_DICTIONARY_STATUS.md) for its evidence and unresolved overall-verifier gate. The counts and WordNet/cue results below are not full-export results.
 
 ## Status and scope
 

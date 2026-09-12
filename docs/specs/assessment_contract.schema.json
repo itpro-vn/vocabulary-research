@@ -1,0 +1,498 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:vocabulary-research:assessment-contract:2.0.0",
+  "title": "Proposed assessment wire contracts; not implemented service",
+  "$comment": "Business rules such as option membership, bound ordering/frame maximum, authorization, form-specific option counts and probability validity require server validation. Numeric payloads must be finite. Limits are transport ceilings, not calibrated test constants.",
+  "$ref": "#/$defs/AssessmentResult",
+  "$defs": {
+    "VersionRequest": {
+      "type": "object",
+      "properties": {
+        "expected_version": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "expected_version"
+      ],
+      "additionalProperties": false
+    },
+    "CreateAssessment": {
+      "type": "object",
+      "properties": {
+        "profile_id": {
+          "const": "baseline-design-v0.1"
+        },
+        "form_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "locale": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 35
+        }
+      },
+      "required": [
+        "profile_id",
+        "form_id",
+        "locale"
+      ],
+      "additionalProperties": false
+    },
+    "Session": {
+      "type": "object",
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state": {
+          "enum": [
+            "created",
+            "screening",
+            "focused",
+            "research",
+            "completed",
+            "incomplete",
+            "cancelled",
+            "expired",
+            "failed"
+          ]
+        },
+        "profile_id": {
+          "const": "baseline-design-v0.1"
+        },
+        "form_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "session_id",
+        "version",
+        "state",
+        "profile_id",
+        "form_id"
+      ],
+      "additionalProperties": false
+    },
+    "Option": {
+      "type": "object",
+      "properties": {
+        "option_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10000
+        }
+      },
+      "required": [
+        "option_id",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "Presentation": {
+      "type": "object",
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "presentation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "item_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "role": {
+          "enum": [
+            "screening",
+            "focused",
+            "research"
+          ]
+        },
+        "stem": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20000
+        },
+        "options": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/$defs/Option"
+          }
+        },
+        "dont_know_available": {
+          "const": true
+        }
+      },
+      "required": [
+        "session_id",
+        "version",
+        "presentation_id",
+        "item_version",
+        "role",
+        "stem",
+        "options",
+        "dont_know_available"
+      ],
+      "additionalProperties": false
+    },
+    "Answer": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "choice"
+            },
+            "option_id": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "required": [
+            "kind",
+            "option_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "dont_know"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Timing": {
+      "type": "object",
+      "properties": {
+        "client_elapsed_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "visibility_known": {
+          "type": "boolean"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "SubmitResponse": {
+      "type": "object",
+      "properties": {
+        "expected_version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "presentation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "answer": {
+          "$ref": "#/$defs/Answer"
+        },
+        "timing": {
+          "$ref": "#/$defs/Timing"
+        }
+      },
+      "required": [
+        "expected_version",
+        "presentation_id",
+        "answer"
+      ],
+      "additionalProperties": false
+    },
+    "Receipt": {
+      "type": "object",
+      "properties": {
+        "session_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "presentation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "accepted": {
+          "const": true
+        },
+        "receipt_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "session_id",
+        "version",
+        "presentation_id",
+        "accepted",
+        "receipt_id"
+      ],
+      "additionalProperties": false
+    },
+    "Interval": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "design_confidence"
+        },
+        "method": {
+          "const": "hypergeometric_inversion_bonferroni"
+        },
+        "level": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "exclusiveMaximum": 1
+        },
+        "bounds": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "number",
+              "minimum": 0
+            },
+            {
+              "type": "number",
+              "minimum": 0
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "conditional_on": {
+          "const": [
+            "fixed_potential_outcomes",
+            "frozen_screening",
+            "valid_focused_sampling"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "method",
+        "level",
+        "bounds",
+        "conditional_on"
+      ],
+      "additionalProperties": false
+    },
+    "AssessmentResult": {
+      "type": "object",
+      "properties": {
+        "result_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "session_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "result_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "status": {
+          "enum": [
+            "scored",
+            "insufficient_evidence",
+            "invalidated"
+          ]
+        },
+        "profile_id": {
+          "const": "baseline-design-v0.1"
+        },
+        "estimand": {
+          "const": "finite_frame_correct_response_total"
+        },
+        "count_unit": {
+          "const": "lemma_pos"
+        },
+        "frame_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "frame_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "estimate": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "interval": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Interval"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "claim_status": {
+          "const": "diagnostic_only"
+        },
+        "public_vocabulary_claim_allowed": {
+          "const": false
+        },
+        "theta": {
+          "type": "null"
+        },
+        "vocabulary_count": {
+          "type": "null"
+        },
+        "cefr": {
+          "type": "null"
+        },
+        "reason_codes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "incomplete_design_responses",
+              "design_support_lost",
+              "confirmed_integrity_failure",
+              "item_key_invalidated",
+              "authorized_data_deletion"
+            ]
+          }
+        }
+      },
+      "required": [
+        "result_id",
+        "session_id",
+        "result_version",
+        "status",
+        "profile_id",
+        "estimand",
+        "count_unit",
+        "frame_id",
+        "frame_size",
+        "estimate",
+        "interval",
+        "claim_status",
+        "public_vocabulary_claim_allowed",
+        "theta",
+        "vocabulary_count",
+        "cefr",
+        "reason_codes"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "scored"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "estimate": {
+                "type": "number"
+              },
+              "interval": {
+                "$ref": "#/$defs/Interval"
+              },
+              "reason_codes": {
+                "maxItems": 0
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "estimate": {
+                "type": "null"
+              },
+              "interval": {
+                "type": "null"
+              },
+              "reason_codes": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 2000
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "request_id"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

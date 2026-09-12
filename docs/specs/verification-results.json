@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "checks_passed": 127,
+  "json_references_resolved": 71,
+  "http_operations": 6,
+  "p0_specs_verified": 7,
+  "numbered_research_files": 75,
+  "archive_files_hash_verified": 8,
+  "local_link_targets_checked": 196,
+  "excluded_link_context": "eight byte-preserved historical specs/roadmap; original relative links are historical",
+  "scope": "schema fixtures, shared tokens, archive preservation and local target paths; not OpenAPI meta-schema certification, business invariants, source audit, service deployment or empirical validation",
+  "existing_reference_tests": {
+    "count": 17,
+    "status": "PASS"
+  },
+  "tracked_diff_check": "PASS",
+  "private_source_hashes_unchanged": {
+    "dictionary.sqlite": true,
+    "dictionary_optimized_readable.json": true
+  },
+  "private_sources_ignored_untracked": true
+}

@@ -1,6 +1,12 @@
-# Vocabulary-size test algorithm — research report
+# Vocabulary-size test algorithm — research archive
 
-## Verified LazzyBee database integration
+> Historical research, not the active implementation contract. Use the [harmonized P0 suite](../docs/specs/README.md) and [current source-data status](../docs/data/SERVER_DICTIONARY_STATUS.md). Old progress counters, Advisor approvals and data-scope statements below describe their historical snapshots.
+
+## Newly incorporated research and prior specs
+
+Files 66–75 (actual iterations 63–72) are indexed in the [research incorporation matrix](../docs/specs/RESEARCH_INCORPORATION.md), with links to every file and the decision applied to active specs. The [superseded seven-spec suite and roadmap](specs-before-harmonization/README.md) are preserved byte-for-byte with a hash manifest.
+
+## Historical learning-snapshot integration
 
 The owner-supplied `english_optimized.db` has now been audited locally: **3,885 source rows**, all unique after the documented headword normalization; **3,848 (99.0476%)** have lexical candidates in pinned Open English WordNet 2025. This does **not** confirm target-sense agreement, a reviewed lemma-POS frame, or the approximately 44,000-item full-library scope. **3,798 explanations contain their target headword**, requiring separate assessment authoring rather than automatic reuse as definition-to-word questions.
 

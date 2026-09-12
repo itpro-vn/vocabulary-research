@@ -1,6 +1,8 @@
 # Offline LazzyBee research tools
 
-These are executable **research references**, not a production assessment service. They support the real snapshot audit in [../../docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md](../../docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md). No source dictionary or user data is bundled.
+These are executable **research references**, not a production assessment service. They support the earlier learning snapshot audit in [../../docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md](../../docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md). No source dictionary or user data is bundled.
+
+The [harmonized P0 suite](../../docs/specs/README.md) now defines the default response-total profile consistently across Sampling, Scoring and API. These tools do not implement that API or all release gates. The [full server export](../../docs/data/SERVER_DICTIONARY_STATUS.md) is a separate private input; a standardized-dictionary reader adapter remains to be implemented. Do not rename its table into the learning schema or infer reviewed lemma/POS units from raw rows.
 
 ## Commands
 

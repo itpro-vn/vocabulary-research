@@ -1,0 +1,45 @@
+{
+  "status": "superseded historical files; not normative",
+  "files": [
+    {
+      "name": "MEASUREMENT_SPEC.md",
+      "source_path": "docs/specs/MEASUREMENT_SPEC.md",
+      "sha256": "ca7393c10d645b2ef85e89f8797efa6cacb3f664314952a1fbe94fdc4542473b"
+    },
+    {
+      "name": "SAMPLING_AND_ESTIMATION_SPEC.md",
+      "source_path": "docs/specs/SAMPLING_AND_ESTIMATION_SPEC.md",
+      "sha256": "e0014bb1b263a10dbc2e86b6bc2e92044b8a85e37722e0318a759533a373f4c7"
+    },
+    {
+      "name": "SCORING_SPEC_V0.md",
+      "source_path": "docs/specs/SCORING_SPEC_V0.md",
+      "sha256": "998802da5a61a7970bac9c3ca2f32ccf0038f80c948314590507e8fc7506a634"
+    },
+    {
+      "name": "API_AND_STATE_MACHINE_SPEC.md",
+      "source_path": "docs/specs/API_AND_STATE_MACHINE_SPEC.md",
+      "sha256": "7e8d1870ff4b917122e318bd7ba17137a2fe5e9d134c4b59ee1e64519579d285"
+    },
+    {
+      "name": "ARTIFACT_LINEAGE_AND_GOVERNANCE.md",
+      "source_path": "docs/specs/ARTIFACT_LINEAGE_AND_GOVERNANCE.md",
+      "sha256": "d4ff0855eb016040bb5ecfbd60861c50b5fc7883ceea51018cc89d667db71578"
+    },
+    {
+      "name": "PILOT_CALIBRATION_PROTOCOL.md",
+      "source_path": "docs/specs/PILOT_CALIBRATION_PROTOCOL.md",
+      "sha256": "42dd7be25a0b1aa907f2ffc61109955cc7fab99efccd910990c54b208bf7733a"
+    },
+    {
+      "name": "DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md",
+      "source_path": "docs/specs/DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md",
+      "sha256": "786ed11083f54454bac6419073e6662ed7e805afc414b0de66de6862b9157846"
+    },
+    {
+      "name": "ROADMAP_ARCHITECTURE.md",
+      "source_path": "ROADMAP_ARCHITECTURE.md",
+      "sha256": "f6a72c992dd259a85bc20ef9519a2dac5efdbd18c5f06426b2e617d3cff6686d"
+    }
+  ]
+}

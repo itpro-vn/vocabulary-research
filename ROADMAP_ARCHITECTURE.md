@@ -1,194 +1,61 @@
-# Strategic Architecture & Implementation Roadmap: Vocabulary Size Estimation
+# Vocabulary Research — architecture and implementation roadmap
 
-> **Verified source-data integration:** [The supplied LazzyBee snapshot](docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md) contains 3,885 source headword records, not an established 20,000/44,000-unit measurement frame. Offline onboarding tools now run on actual data. POS/sense review, cue-safe item authoring, representative bank construction and human calibration remain release gates; the snapshot does not constitute final implementation sign-off.
+**Version:** 2.0.0
+**Status:** harmonized implementation target; production and empirical claims not approved. Historical Advisor reviews apply only to their [archived revision](raw/specs-before-harmonization/ROADMAP_ARCHITECTURE.md), not automatically to this revision.
 
-> **Document Version:** 1.1.0  
-> **Status:** Strategy Approved · Implementation Architecture Conditionally Approved (Pending P0 Technical Specifications)  
-> **Target Audience:** Engineering Leads, PMs, Backend, Flutter Mobile/Web, Data & Psychometrics Teams (`itpro-vn`)  
-> **Strategic Advisor Review:** Reviewed by GPT-6-Astra (Conditional Sign-off with P0 Action Items)
+## 1. Current evidence
 
----
+The owner confirms a full server dictionary export: 42,497 records in JSON/SQLite, separate from the earlier 3,885-record learning snapshot. Both remain private local artifacts. The full verifier reports matched records/IDs and zero mapped-field mismatches but **overall verification failure**; the exact failed gate remains unresolved. No source migration, reviewed full measurement frame or human calibration is completed. [Source evidence](docs/data/SERVER_DICTIONARY_STATUS.md).
 
-## ⚠️ Strategic Advisor Sign-off Status & Guardrails
-* **Strategy & Core Principles:** **APPROVED** (Receptive construct definition, frequency-stratified baseline before CAT, LLM as drafting assistant only, telemetry-driven offline calibration).
-* **Production Implementation Architecture:** **CONDITIONALLY APPROVED** (Requires resolution of 5 P0 Specifications below before locking scoring contracts or public scoring claims).
-* **Public Beta with "Vocabulary Size" Claims:** **NOT APPROVED YET** (Requires empirical validation against an independent reference test with characterized measurement error).
+Research files 01–75 are retained in [raw/](raw/README.md), including the newly reviewed files 66–75/iterations 63–72. The [incorporation matrix](docs/specs/RESEARCH_INCORPORATION.md) distinguishes accepted clarification, already-covered controls and deferred models. The vocabulary research cron and subagents remain paused.
 
----
+## 2. Architecture decisions
 
-## 1. Executive Summary & Problem Framing
+- Use LazzyBee owner data first. Keep original export and flattened SQLite unchanged; create a separately versioned standardized private artifact later.
+- Separate source row, reviewed lemma/POS-target-sense unit, supported sampling frame and approved item version. Do not use row count as vocabulary N.
+- Default `baseline-design-v0.1` estimates `finite_frame_correct_response_total`, using disjoint screening plus probability-sampled remainder, not latent known-word count.
+- Baseline remains diagnostic-only: public vocabulary claim false, theta/vocabulary_count/CEFR null. Empirical recognition claims require separate evidence/profile approval.
+- Preserve single-key MCQ, explicit dont_know, no missing-as-wrong, no adaptive early stopping and no automatic guessing/isotonic/RT correction.
+- Prefer explicit artifact/response/claim contracts and a verified baseline before calibrated CAT or other advanced models. Papers/vendor claims do not provide local calibration.
 
-Project **`vocabulary-research`** addresses the fundamental challenge of accurately, quickly, and reliably estimating an individual's English vocabulary size through an adaptive digital assessment.
+## 3. Modules and boundaries
 
-While commercial benchmarks (such as Preply's Vocabulary Test) claim a "±10% margin of error", systematic audits show that these figures rely on uncalibrated heuristic assumptions (such as logarithmic midpoint estimation over static dictionary headwords) without published peer-reviewed validation. Conversely, traditional psychometric instruments (such as Paul Nation's Vocabulary Size Test - VST) utilize simplistic fixed-form scoring (`Total Correct × 100`) without guessing penalties, item exposure controls, or response-time quality gates.
+1. **Private data onboarding:** source fidelity, standardized lookup, hashes/versions, exception inventory; no production DB replacement.
+2. **Unit/content pipeline:** human sense/POS/key review, cue/distractor/accessibility checks, supported frame and form manifests.
+3. **Sampling/session service:** frozen plans/probabilities, secure assignments, idempotent submission and consent-aware research slots.
+4. **Scoring/claims:** deterministic response reduction/residual intervals, explicit no-score behavior, restricted diagnostic results and later separately validated models.
+5. **Governance/validation:** dependency closure, privacy/erasure, exposure/integrity review, simulation/pilot/holdout and rollback.
 
-**Core Mission:** Transition from theoretical research (Iterations 01–65) into an enterprise-grade, scientifically grounded, and user-centric software platform.
+Data and item IDs are not public enumeration APIs. Keys, raw source content, seeds and detector internals remain restricted. Public documentation contains schema, tests using synthetic values and approved aggregate evidence.
 
-### Key Construct Definition (Non-Negotiable)
-To prevent construct invalidity, the system does not make ambiguous marketing claims like *"You know N English words"*. The formal measurement construct is strictly defined as:
-> **"Estimated Receptive Meaning Recognition across a standardized, stratified lexical frequency framework, evaluated under bounded assessment conditions."**
+## 4. Ordered work packages
 
-All score reporting must explicitly disclose:
-1. **The Lexical Unit:** Standardized Lemma / Headword frame (excluding archaic/specialized tail noise).
-2. **Evaluation Depth:** Receptive recognition (meaning selection), distinguished from productive or collocate mastery.
-3. **Uncertainty Bounds:** Bayesian credible interval and Conditional Standard Error of Measurement (CSEM) rather than a single point estimate.
-
----
-
-## 2. Phased Transition Roadmap
-
-```
-┌──────────────────────────────────────────────────────────────────────────┐
-│ Phase A: Formal Measurement Specification & Freeze (Current)             │
-│ - Finalize Lexical Frame, item authoring schema, and Decision Register    │
-│ - Implement Cold-Start Item Bank (1,200 curated items)                   │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-                                     ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│ Phase B: Controlled Stratified Beta Engine (5–8 min assessment)          │
-│ - Two-stage Stratified Sampling Core (Screening + Focused Bracket)       │
-│ - Rapid-Guessing & Latency Quality Filters (No naive score penalties)    │
-│ - Launch Web & Mobile Beta to collect clean empirical telemetry          │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-                                     ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│ Phase C: Structured Data Collection & Empirical Pilot Calibration        │
-│ - Retain random item exposure quotas & anchor items across forms         │
-│ - Regularized 1PL (Rasch) / 2PL calibration via Marginal Maximum Likelihood│
-│ - Validate against an independent, long-form reference ground truth      │
-└────────────────────────────────────┬─────────────────────────────────────┘
-                                     │
-                                     ▼
-┌──────────────────────────────────────────────────────────────────────────┐
-│ Phase D: Full Adaptive Engine (Multistage / Constrained Shadow-CAT)      │
-│ - Deploy Content-Constrained Adaptive Routing only after proven out-of-   │
-│   sample accuracy gain over Stratified Baseline                          │
-└──────────────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 3. System Architecture (5 Decoupled Modules)
-
-The software architecture is decoupled into 5 independent subsystems to allow the underlying statistical and estimation engines to evolve without modifying frontend applications.
-
-```
-                  ┌─────────────────────────────────────────┐
-                  │      Client Apps (Flutter Web/Mobile)   │
-                  └────────────────────┬────────────────────┘
-                                       │ REST / gRPC
-                                       ▼
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│ 2. Test Delivery Engine (Session, Staging, Latency Capture, Shadow Constraints) │
-└───────────────────────┬───────────────────────────────────┬──────────────────────┘
-                        │                                   │
-                        ▼                                   ▼
-┌───────────────────────────────────────┐ ┌────────────────────────────────────────┐
-│ 1. Lexical Frame & Item Registry      │ │ 3. Scoring Engine (Plug-and-Play)     │
-│ - Frequency metadata (Zipf, BNC/COCA) │ │ - Baseline: Stratified Weighted Est.   │
-│ - Versioned Item Bank & Distractors   │ │ - Advanced: Bayesian EAP / 2PL-IRT     │
-│ - Content provenance & licensing      │ │ - Output: θ, Count, CSEM, Credible Int.│
-└───────────────────────────────────────┘ └────────────────────────────────────────┘
-                        │                                   │
-                        ▼                                   ▼
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│ 4. Telemetry, Audit & Response Store                                             │
-│ - Raw item responses, item position, latency (ms), client telemetry               │
-│ - Pure event sourcing: Scores can be recomputed retrospectively under new models │
-└───────────────────────────────────────┬──────────────────────────────────────────┘
-                                        │
-                                        ▼
-┌──────────────────────────────────────────────────────────────────────────────────┐
-│ 5. Offline Calibration & Quality Pipeline                                        │
-│ - Item response modeling, Distractor functioning analysis, DIF detection         │
-│ - Shadow-test item bank health, anchor verification, model registry & rollback    │
-└──────────────────────────────────────────────────────────────────────────────────┘
-```
-
-### Module Specifications:
-1. **Lexical Frame & Item Registry:**
-   - Defines word frequency strata (Bands 1k to 20k+ based on SUBTLEX, COCA, BNC).
-   - Immutable item versioning: altering a distractor creates item `v1.1` to preserve calibration history.
-2. **Test Delivery Engine:**
-   - Controls progression: Stage 1 (Screening: ~25 items across all bands) -> Stage 2 (Focused: ~45 items around estimated boundary) -> Dynamic items (5–10 calibration research items).
-   - Enforces time budgets (targeted at 5–7 minutes, max 8 minutes).
-3. **Scoring Engine:**
-   - Completely agnostic of delivery UI.
-   - Computes score and uncertainty interval independently.
-4. **Telemetry & Audit Store:**
-   - Raw logs remain immutable. If model parameters are recalibrated, past telemetry can be re-scored for longitudinal validation.
-5. **Offline Calibration Pipeline:**
-   - Runs periodic MML / EM estimation, evaluates item discrimination parameters ($a$) and difficulties ($b$), identifies misfitting items.
-
----
-
-## 4. Cold-Start Item Bank Strategy
-
-| Component | Strategic Purpose | Hard Boundary / What NOT to do |
+| Stage | Deliverable | Exit condition |
 |---|---|---|
-| **Corpus Frequency (Zipf/COCA)** | Stratified sampling blueprint, initial ability prior | Do NOT treat word frequency rank as empirical item difficulty. |
-| **LLM-Assisted Generation** | Drafting sentence contexts, definitions, and plausible distractors | Do NOT publish without human review. Distractors must be checked for unintended grammatical or semantic cues. |
-| **Open Psychometric Datasets** | Covariate calibration (familiarity, word length, part of speech) | Do NOT import external dataset statistics directly as calibrated IRT item parameters. |
-| **Response Latency (Time)** | Quality gate: flagging rapid-guessing (<1.5s) and timeout | Do NOT apply rigid numerical score penalties based on elapsed seconds. |
+| A — data gate | Exact verifier failure diagnosis and narrowly justified correction | Full named checks pass without dropping material invariants |
+| B — standardization | New private artifact per [SQLite spec](docs/specs/SQLITE_DATA_STANDARDIZATION_SPEC.md) | Original hashes unchanged; full mapping, types, NULL/date/JSON, private promotion/rollback verified |
+| C — units/content | Reviewed unit/sense and single-key item/form manifests | Supported frame, explicit exclusions, no unapproved key/cue ambiguity |
+| D — baseline/service | Read adapter, frozen sampling, scoring and proposed API integration | Joint schema, response, concurrency, replay, security and end-to-end tests |
+| E — pilot/claims | Registered cognitive/operational/independent validation studies | Practical error/coverage/form/fairness/use criteria pass for declared claims |
+| F — optional advanced profile | Calibrated model/CAT/other format | Better than baseline under same declared budget, with own uncertainty/support/claim gates |
 
----
+Do not implement a new profile or raise public claim strength merely to use additional research. Source count, bank size, number of strata and respondent N are separate quantities. Historical 20,000-frame/1,200-item/ten-band/sample-count plans are not current mandatory constants.
 
-## 5. Verification Gates & KPI Framework
+## 5. Active specification suite
 
-To scientifically validate that our engine outperforms commercial heuristic tests (e.g., Preply) and traditional static VSTs, the following gates must be met:
+- [Measurement](docs/specs/MEASUREMENT_SPEC.md)
+- [Sampling and estimation](docs/specs/SAMPLING_AND_ESTIMATION_SPEC.md)
+- [Scoring V0](docs/specs/SCORING_SPEC_V0.md)
+- [API and state machine](docs/specs/API_AND_STATE_MACHINE_SPEC.md) + [machine schema](docs/specs/assessment_contract.schema.json)
+- [Artifact lineage and governance](docs/specs/ARTIFACT_LINEAGE_AND_GOVERNANCE.md)
+- [Pilot and calibration](docs/specs/PILOT_CALIBRATION_PROTOCOL.md)
+- [Privacy/accessibility](docs/specs/DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md)
+- Data companion: [SQLite standardization](docs/specs/SQLITE_DATA_STANDARDIZATION_SPEC.md) + [proposed DDL](docs/specs/sqlite_standardization_v1.sql)
 
-### Gate 1: Safe Public Beta Release
-- [ ] Item Bank contains >= 1,200 human-verified items across 14 frequency strata.
-- [ ] Median completion time is verified between 5.0 and 7.5 minutes in internal dogfooding.
-- [ ] Telemetry pipeline captures milliseconds, option selections, and client device properties without data loss.
-- [ ] Score report presents vocabulary count + 95% Credible Interval; no unverified claims.
+[Suite README](docs/specs/README.md) defines ownership/precedence. The seven P0 documents are updated together at revision 2.0.0. Historical detail is retained under raw/specs-before-harmonization, not simultaneously authoritative.
 
-### Gate 2: Empirical Accuracy & Calibration Verification
-- [ ] Independent validation study conducted against a calibrated long-form reference assessment (>= 140 items).
-- [ ] Empirical 95% credible intervals demonstrate nominal coverage (actual hit rate between 92% and 97%).
-- [ ] Mean Absolute Error (MAE) and root-mean-square error (RMSE) evaluated across low, mid, and high ability tiers.
+## 6. Status and approval boundary
 
-### Gate 3: Superiority Claim Gate (vs. Preply / Baseline)
-- [ ] Direct counterbalanced within-subject test against Preply on a representative L2 cohort.
-- [ ] Statistically significant reduction in estimation variance (CSEM) under identical time constraints.
-- [ ] Verified test-retest reliability ($r \ge 0.88$) on alternate forms.
+Completed artifacts: research archive, older snapshot audit/reference tools, data-copy evidence, research decision review, SQLite specification/DDL and harmonized P0 documents. Existing offline tests and new schema checks are engineering evidence only.
 
----
-
-## 6. Engineering Action Plan & Team Allocation
-
-### Immediate Permitted Scope vs. Blocked Scope
-* **Backend:** Permitted to build Item Registry, authoring workflows, and telemetry pipelines. *BLOCKED from locking final scoring APIs or adaptive routing logic until P0.1, P0.2, and P0.4 contracts are signed off.*
-* **Frontend (Flutter Mobile/Web):** Permitted to build UI prototypes, accessibility flows, and timing/reconnect spikes. *BLOCKED from hardcoding final score labels or confidence interval visualizations.*
-* **Data / Psychometrics:** Permitted to curate initial lexical frames and draft item bank. *BLOCKED from claiming calibrated IRT parameters until empirical pilot data is gathered.*
-* **Product / PMs:** Permitted to design consent flows and study protocols. *BLOCKED from marketing "±X% accuracy" claims.*
-
----
-
-## 7. Mandatory P0 Specifications Required for Final Implementation Sign-off
-
-Before production implementation and public beta release, the team must produce and freeze the following formal specifications (now drafted and available in `docs/specs/`):
-
-1. [**`MEASUREMENT_SPEC.md` (P0.1)**](docs/specs/MEASUREMENT_SPEC.md):
-   - Precise definition of Lexical Universe size ($N = 20,000$), lemma/headword boundary rules, and handling of polysemy (lemma vs. lemma-sense).
-   - Mathematical specification of the primary estimand:
-     $$\widehat{V} = \sum_{h=1}^H N_h \cdot \widehat{p}_h$$
-     with an explicit operational definition of $\widehat{p}_h$ (recognition probability vs. raw percent correct).
-2. [**`SAMPLING_AND_ESTIMATION_SPEC.md` (P0.2)**](docs/specs/SAMPLING_AND_ESTIMATION_SPEC.md):
-   - Design-based vs. model-based sampling weights and extrapolation rules for unobserved strata.
-   - Simulation analysis demonstrating coverage and bias across varied proficiency profiles.
-3. [**`SCORING_SPEC_V0.md` (P0.3)**](docs/specs/SCORING_SPEC_V0.md):
-   - Transparent guessing models and sensitivity checks; distinction between Credible Interval, Confidence Interval, and CSEM on count scale vs. latent $\theta$.
-4. [**`API_AND_STATE_MACHINE_SPEC.md` (P0.4)**](docs/specs/API_AND_STATE_MACHINE_SPEC.md):
-   - Session lifecycle state machine (`created` -> `in_progress` -> `completed` / `expired` / `invalidated`).
-   - Monotonic clock latency capture contract with client device telemetry; idempotent event submission schemas.
-5. [**`ARTIFACT_LINEAGE_AND_GOVERNANCE.md` (P0.5)**](docs/specs/ARTIFACT_LINEAGE_AND_GOVERNANCE.md):
-   - Immutable artifact lineage tracking ensuring 100% reproducible re-scoring of any historical session across versioned models and item bank snapshots.
-6. [**`PILOT_CALIBRATION_PROTOCOL.md` (P0.6)**](docs/specs/PILOT_CALIBRATION_PROTOCOL.md):
-   - Controlled empirical data collection protocol, matrix booklet design with anchor items, and Rasch/2PL item-fit quality gates.
-7. [**`DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md` (P0.7)**](docs/specs/DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md):
-   - Pseudonymized telemetry logging, item scraping defense, and WCAG 2.1 AA device-neutral fairness standards.
-
-
+Not completed: resolved overall data audit, standardized owner-data build, reviewed full-frame bank, API service, human pilot/calibration, independent production snapshot comparison or public recognition/CEFR validation. Source data and application code remain unchanged in this documentation revision. Implementation and background research stay deferred until separately requested.
