@@ -1,6 +1,6 @@
 # 1. Tóm tắt điều hành
 
-> **Actual-data update:** The supplied LazzyBee snapshot is now available and audited: 3,885 source records; 99.0476% have WordNet lexical candidates, but semantic review and human calibration remain pending. This supersedes any generic assumption that no owner data is available, not the unresolved Preply-data or validation gaps. See [snapshot audit](docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md). Raw records are not published.
+> **Actual-data update:** The supplied LazzyBee snapshot is now available and audited: 3,885 source records; 99.0476% have WordNet lexical candidates, but semantic review and human calibration remain pending. This supersedes any generic assumption that no owner data is available, not the unresolved Preply-data or validation gaps. See [snapshot audit](../docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md). Raw records are not published.
 
 ## Kết luận hiện tại
 
