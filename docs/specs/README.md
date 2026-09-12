@@ -25,12 +25,12 @@
 | Human studies and empirical evidence | [P0.6 Pilot](PILOT_CALIBRATION_PROTOCOL.md) | Registered studies, not imported thresholds |
 | Privacy, security, accessibility | [P0.7 Privacy](DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md) | Data minimization, deletion, access and UI |
 
-Every active document is revision 2.0.0. The new suite resolves document-level profile conflicts; it does not claim the API/service has been implemented or the offline CLI already enforces all new release gates. The proposed API retains `/v1` as a design namespace because no deployed implementation was established; an existing consumer discovered later requires explicit compatibility review before adoption.
+The seven P0 specifications remain revision 2.0.0; the delivery roadmap and data companion have independent version numbers. The new suite resolves document-level profile conflicts; it does not claim the API/service has been implemented or the offline CLI already enforces all new release gates. The proposed API retains `/v1` as a design namespace because no deployed implementation was established; an existing consumer discovered later requires explicit compatibility review before adoption.
 
 ## Review traceability and delivery gates
 
 [Research incorporation matrix](RESEARCH_INCORPORATION.md) records decisions for all ten new files, including items rejected or already covered. Research file numbers 66–75 correspond to actual iterations 63–72. The old fixed 20,000-frame, 1,200-item, ten-band and fixed sample-size targets are historical planning candidates, not acquired resources or new mandatory constants.
 
-Mandatory order: resolve data-verifier failure → standardized source artifact → reviewed units/content and supported frame → executable baseline/API integration → cognitive and operational pilot → empirical claim validation → optional advanced models if superior under the same declared budget.
+Mandatory delivery sequence is defined in the [six-phase roadmap](../../ROADMAP_ARCHITECTURE.md#4-six-delivery-phases): Phase 1 trusted data → Phase 2 reviewed frame/items → Phase 3 pilot MVP → Phase 4 human validation → Phase 5 LazzyBee production/operations → Phase 6 optional optimization/expansion. The P0 documents are cross-cutting contracts for all phases, not a completed implementation phase. The roadmap gives each phase its owner role, dependencies, deliverables, exit gate, rework path and remaining specification gaps.
 
 No file count, passing schema test, mathematical expectation fixture or owner data ownership replaces joint release evidence. [Archived specifications](../../raw/specs-before-harmonization/README.md) remain available without preserving their former normative authority.

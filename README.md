@@ -4,7 +4,7 @@ This repository contains the research archive and implementation blueprint for a
 
 ## Start here
 
-- [Roadmap and architecture](ROADMAP_ARCHITECTURE.md)
+- [Six-phase roadmap and architecture](ROADMAP_ARCHITECTURE.md#4-six-delivery-phases) — data → reviewed content → pilot MVP → validation → LazzyBee production → optional optimization
 - [Harmonized P0 suite](docs/specs/README.md) — all seven measurement/product specifications updated to revision 2.0.0
 - [New research incorporation](docs/specs/RESEARCH_INCORPORATION.md) — decisions for files 66–75 / iterations 63–72
 - [Current server-dictionary status](docs/data/SERVER_DICTIONARY_STATUS.md) — full export supplied; overall verifier gate still unresolved
