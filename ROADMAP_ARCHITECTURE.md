@@ -167,21 +167,26 @@ To scientifically validate that our engine outperforms commercial heuristic test
 
 ## 7. Mandatory P0 Specifications Required for Final Implementation Sign-off
 
-Before production implementation and public beta release, the team must produce and freeze the following formal specifications:
+Before production implementation and public beta release, the team must produce and freeze the following formal specifications (now drafted and available in `docs/specs/`):
 
-1. **`MEASUREMENT_SPEC.md` (P0.1):**
-   - Precise definition of Lexical Universe size ($N$), lemma/headword boundary rules, and handling of polysemy (lemma vs. lemma-sense).
+1. [**`MEASUREMENT_SPEC.md` (P0.1)**](docs/specs/MEASUREMENT_SPEC.md):
+   - Precise definition of Lexical Universe size ($N = 20,000$), lemma/headword boundary rules, and handling of polysemy (lemma vs. lemma-sense).
    - Mathematical specification of the primary estimand:
      $$\widehat{V} = \sum_{h=1}^H N_h \cdot \widehat{p}_h$$
      with an explicit operational definition of $\widehat{p}_h$ (recognition probability vs. raw percent correct).
-2. **`SAMPLING_AND_ESTIMATION_SPEC.md` (P0.2):**
+2. [**`SAMPLING_AND_ESTIMATION_SPEC.md` (P0.2)**](docs/specs/SAMPLING_AND_ESTIMATION_SPEC.md):
    - Design-based vs. model-based sampling weights and extrapolation rules for unobserved strata.
    - Simulation analysis demonstrating coverage and bias across varied proficiency profiles.
-3. **`SCORING_SPEC_V0.md` (P0.3):**
+3. [**`SCORING_SPEC_V0.md` (P0.3)**](docs/specs/SCORING_SPEC_V0.md):
    - Transparent guessing models and sensitivity checks; distinction between Credible Interval, Confidence Interval, and CSEM on count scale vs. latent $\theta$.
-4. **`API_AND_STATE_MACHINE_SPEC.md` (P0.4):**
+4. [**`API_AND_STATE_MACHINE_SPEC.md` (P0.4)**](docs/specs/API_AND_STATE_MACHINE_SPEC.md):
    - Session lifecycle state machine (`created` -> `in_progress` -> `completed` / `expired` / `invalidated`).
    - Monotonic clock latency capture contract with client device telemetry; idempotent event submission schemas.
-5. **`ARTIFACT_LINEAGE_AND_GOVERNANCE.md` (P0.5):**
+5. [**`ARTIFACT_LINEAGE_AND_GOVERNANCE.md` (P0.5)**](docs/specs/ARTIFACT_LINEAGE_AND_GOVERNANCE.md):
    - Immutable artifact lineage tracking ensuring 100% reproducible re-scoring of any historical session across versioned models and item bank snapshots.
+6. [**`PILOT_CALIBRATION_PROTOCOL.md` (P0.6)**](docs/specs/PILOT_CALIBRATION_PROTOCOL.md):
+   - Controlled empirical data collection protocol, matrix booklet design with anchor items, and Rasch/2PL item-fit quality gates.
+7. [**`DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md` (P0.7)**](docs/specs/DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md):
+   - Pseudonymized telemetry logging, item scraping defense, and WCAG 2.1 AA device-neutral fairness standards.
+
 
