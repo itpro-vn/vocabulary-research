@@ -1,0 +1,325 @@
+{
+  "schema": "lazzybee-snapshot-audit-v1",
+  "observed_at_utc": "2026-09-12T06:48:26.691002+00:00",
+  "evidence_kind": "real_user_supplied_snapshot_aggregate_only",
+  "source_file_label": "english_optimized.db",
+  "source_unchanged": true,
+  "source_sha256_after": "1a9a3c9c70d2ea6b56f8ab6c06e3302284f56a186c2bed5591a187d98f3d4473",
+  "audit": {
+    "schema_version": "audit-v0.1",
+    "source_sha256": "1a9a3c9c70d2ea6b56f8ab6c06e3302284f56a186c2bed5591a187d98f3d4473",
+    "rows": 3885,
+    "nonempty_headword_rows": 3885,
+    "unique_normalized_headwords": 3885,
+    "duplicate_normalized_headword_rows": 0,
+    "blank_or_nontext_headwords": 0,
+    "duplicate_id_rows": 0,
+    "null_id_rows": 0,
+    "invalid_json": {
+      "answers": 0,
+      "meaning": 0
+    },
+    "missing_json": {
+      "answers": 0,
+      "meaning": 0
+    },
+    "available_content_columns": [
+      "answers",
+      "id",
+      "l_en",
+      "l_vn",
+      "level",
+      "meaning",
+      "packages",
+      "question"
+    ],
+    "validated_vocabulary_size": false,
+    "interpretation": "Record/headword counts only; not lemma-POS/sense counts or psychometric validation."
+  },
+  "content_profile": {
+    "profile_schema": "lazzybee-content-profile-v0.1",
+    "source_sha256": "1a9a3c9c70d2ea6b56f8ab6c06e3302284f56a186c2bed5591a187d98f3d4473",
+    "bytes": 14919680,
+    "rows": 3885,
+    "sqlite_quick_check": [
+      "ok"
+    ],
+    "table_row_counts": {
+      "system": 4,
+      "vocabulary": 3885,
+      "packageinfo": 0,
+      "packagestatus": 0
+    },
+    "vocabulary_columns": [
+      {
+        "cid": 0,
+        "name": "id",
+        "type": "INTEGER",
+        "notnull": 1,
+        "dflt_value": null,
+        "pk": 1
+      },
+      {
+        "cid": 1,
+        "name": "question",
+        "type": "TEXT",
+        "notnull": 1,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 2,
+        "name": "answers",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 3,
+        "name": "related",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 4,
+        "name": "queue",
+        "type": "INTEGER",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 5,
+        "name": "level",
+        "type": "INTEGER",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 6,
+        "name": "due",
+        "type": "INTEGER",
+        "notnull": 0,
+        "dflt_value": "0",
+        "pk": 0
+      },
+      {
+        "cid": 7,
+        "name": "rev_count",
+        "type": "INTEGER",
+        "notnull": 0,
+        "dflt_value": "0",
+        "pk": 0
+      },
+      {
+        "cid": 8,
+        "name": "user_note",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 9,
+        "name": "last_ivl",
+        "type": "INTEGER",
+        "notnull": 0,
+        "dflt_value": "0",
+        "pk": 0
+      },
+      {
+        "cid": 10,
+        "name": "e_factor",
+        "type": "INTEGER",
+        "notnull": 0,
+        "dflt_value": "2500",
+        "pk": 0
+      },
+      {
+        "cid": 11,
+        "name": "l_vn",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 12,
+        "name": "l_en",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 13,
+        "name": "priority",
+        "type": "INTEGER",
+        "notnull": 0,
+        "dflt_value": "0",
+        "pk": 0
+      },
+      {
+        "cid": 14,
+        "name": "meaning",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 15,
+        "name": "package",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 16,
+        "name": "packages",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      },
+      {
+        "cid": 17,
+        "name": "illustration",
+        "type": "TEXT",
+        "notnull": 0,
+        "dflt_value": null,
+        "pk": 0
+      }
+    ],
+    "level_counts": {
+      "1": 647,
+      "2": 571,
+      "3": 609,
+      "4": 613,
+      "5": 600,
+      "6": 589,
+      "7": 256
+    },
+    "target_mentions": {
+      "explain": 3798,
+      "example": 2836
+    },
+    "target_mention_method": "casefolded exact headword with Unicode word boundaries after HTML text stripping; not full cue detection",
+    "answer_fields": {
+      "explain": {
+        "present": 3885,
+        "string_values": 3885,
+        "nonempty_visible_text": 3885
+      },
+      "example": {
+        "present": 3885,
+        "string_values": 3885,
+        "nonempty_visible_text": 3885
+      },
+      "pronounce": {
+        "present": 3885,
+        "string_values": 3885,
+        "nonempty_visible_text": 3885
+      }
+    },
+    "meaning": {
+      "vn_key_present": 3885,
+      "nonempty_visible_text": 3885
+    },
+    "dictionary_fields": {
+      "l_en": {
+        "nonempty_raw": 3885,
+        "nonempty_visible_text": 3885
+      },
+      "l_vn": {
+        "nonempty_raw": 3885,
+        "nonempty_visible_text": 3885
+      }
+    },
+    "pos_hints": {
+      "source": "whitelisted l_vn span.tl/strong labels; dictionary-wide clues",
+      "rows_with_single_hint": 2186,
+      "rows_with_multiple_hints": 1548,
+      "rows_without_hint": 151,
+      "per_pos_rows": {
+        "a": 964,
+        "adp": 21,
+        "aux": 1,
+        "conj": 13,
+        "intj": 12,
+        "n": 2537,
+        "pron": 2,
+        "r": 141,
+        "v": 1816
+      },
+      "reviewed_target_pos": false
+    },
+    "cefr_hints": {
+      "source": "l_en epp-xref class labels",
+      "rows_with_any_hint": 2768,
+      "per_label_rows": {
+        "A1": 61,
+        "A2": 314,
+        "B1": 839,
+        "B2": 1172,
+        "C1": 674,
+        "C2": 802
+      },
+      "validated_person_or_item_level": false
+    },
+    "notes": [
+      "Nonempty fields do not establish correctness or ownership.",
+      "POS/CEFR row counts can overlap; dictionary hints may describe other senses or phrases.",
+      "No source headwords, definitions, user notes, progress values or system values exported."
+    ]
+  },
+  "wordnet_mapping": {
+    "rows": 3885,
+    "rows_with_candidates": 3848,
+    "by_match_method": {
+      "exact_headword": 3846,
+      "unmatched": 37,
+      "normalized_headword": 2
+    },
+    "source_sha256": "1a9a3c9c70d2ea6b56f8ab6c06e3302284f56a186c2bed5591a187d98f3d4473",
+    "wordnet": {
+      "source_sha256": "9ca6d1dcb75f822fdd66617f7d9da48142ace38dd544d6ad5e2feca1674ad3fe",
+      "index_schema": "wn-candidates-v0.1",
+      "lexicon_id": "oewn",
+      "version": "2025",
+      "license": "https://creativecommons.org/licenses/by/4.0",
+      "sense_links": 185129,
+      "complete": true
+    },
+    "index_sha256": "a7c657d2260ada70bb896cefb1e6c8aea64cd01a8fe5464be80744cd05f0e3a8",
+    "output_sha256": "eb6e60e59c5ecdb69cf81a70aac0005ffebaba863456cd128ce458dc3b2688ad",
+    "automatic_sense_matches": 0,
+    "interpretation": "Row-level lexical candidate coverage only; no confirmed sense mapping."
+  },
+  "candidate_ambiguity_rows": {
+    "multiple": 3300,
+    "single": 548,
+    "none": 37
+  },
+  "candidate_coverage_percent": 99.0476,
+  "review_queue_rows": 3885,
+  "reviewed_target_senses": 0,
+  "full_library_approximately_44000_verified": false,
+  "validated_measurement_frame": false,
+  "human_calibration_completed": false,
+  "public_raw_records_included": false,
+  "tool_sha256": {
+    "vocabtool.py": "b2c7e631989e3d56059fa50860f84a3547da6339a9257f796d1354abc5fa8315",
+    "baseline.py": "a2628a77ca26839930492ee847b4c2a768e51a41b05c7f51a336d8a8468e0398",
+    "profile_snapshot.py": "0f5aa99b81e9ca4446dbb7bbea024cdb7b248e89411d66773e5fdc3b4b226dd6",
+    "requirements.txt": "e7795fa6c435ab86b906a51554efdfc9eb8b94a6ff0f01d8e03cfdd16bb4b120",
+    "tests/test_solution.py": "b61ebaaf72d3f791cae08452a26fb94580c21e39212f2b4950a5320ba38629aa",
+    "tests/test_baseline.py": "f861819df23559ba08a9fc502ec050d91b5a26c7472e0ecfa52c0afdea02082f",
+    "tests/test_profile.py": "1e73840a8e8b7097700bde9e7ac3a7b26c0ae7c0b47eaad4c3762672eb58c8b2"
+  }
+}

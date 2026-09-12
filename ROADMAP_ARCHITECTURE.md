@@ -1,5 +1,7 @@
 # Strategic Architecture & Implementation Roadmap: Vocabulary Size Estimation
 
+> **Verified source-data integration:** [The supplied LazzyBee snapshot](docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md) contains 3,885 source headword records, not an established 20,000/44,000-unit measurement frame. Offline onboarding tools now run on actual data. POS/sense review, cue-safe item authoring, representative bank construction and human calibration remain release gates; the snapshot does not constitute final implementation sign-off.
+
 > **Document Version:** 1.1.0  
 > **Status:** Strategy Approved · Implementation Architecture Conditionally Approved (Pending P0 Technical Specifications)  
 > **Target Audience:** Engineering Leads, PMs, Backend, Flutter Mobile/Web, Data & Psychometrics Teams (`itpro-vn`)  

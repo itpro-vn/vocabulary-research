@@ -1,5 +1,7 @@
 # SCORING_SPEC_V0.md
 
+> **Readiness clarification from actual data:** [The supplied snapshot](../data/LAZZYBEE_SNAPSHOT_AUDIT.md) establishes content availability, not calibrated item parameters or latent word knowledge. The [offline design baseline](../../tools/lazzybee/README.md) estimates a finite-frame correct-response total and explicitly disallows public vocabulary claims. It is not an interchangeable implementation of the latent model below; cross-spec estimator/unit reconciliation remains required.
+
 > **Dự án:** `vocabulary-research`  
 > **Repository:** `itpro-vn/vocabulary-research`  
 > **Hạng mục:** P0.3 — Scoring Engine baseline  

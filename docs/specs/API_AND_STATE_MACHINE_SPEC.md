@@ -1,5 +1,7 @@
 # API_AND_STATE_MACHINE_SPEC.md
 
+> **Data-integration constraint:** [The actual LazzyBee source](../data/LAZZYBEE_SNAPSHOT_AUDIT.md) is a dictionary/learning snapshot, not an assessment response dataset. Preserve source IDs through a reviewed crosswalk and serve separately authored ItemVersions. The offline CLI does not implement this API; Dont Know, no-score statuses, server-side answer authority and versioned release contracts still require joint validation with Scoring.
+
 | Thuộc tính | Giá trị |
 |---|---|
 | Dự án | `vocabulary-research` |

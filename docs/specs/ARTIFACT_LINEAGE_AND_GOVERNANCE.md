@@ -1,5 +1,7 @@
 # ARTIFACT_LINEAGE_AND_GOVERNANCE.md
 
+> **Concrete source artifact:** [Aggregate snapshot evidence](../data/snapshot-audit.json) now records the actual SQLite checksum, pinned WordNet resource/index hashes, mapping-output hash and tool hashes. The database and row-level mapping/review queue remain private. Audit ordinals are snapshot-local, not durable lexical identities; frame/bank/calibration release artifacts remain pending.
+
 > **Project:** `vocabulary-research`  
 > **Repository:** `itpro-vn/vocabulary-research`  
 > **Specification version:** `1.0.0`  

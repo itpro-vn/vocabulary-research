@@ -1,5 +1,15 @@
 # Vocabulary-size test algorithm — research report
 
+## Verified LazzyBee database integration
+
+The owner-supplied `english_optimized.db` has now been audited locally: **3,885 source rows**, all unique after the documented headword normalization; **3,848 (99.0476%)** have lexical candidates in pinned Open English WordNet 2025. This does **not** confirm target-sense agreement, a reviewed lemma-POS frame, or the approximately 44,000-item full-library scope. **3,798 explanations contain their target headword**, requiring separate assessment authoring rather than automatic reuse as definition-to-word questions.
+
+- [Actual snapshot audit and revised implementation gates](docs/data/LAZZYBEE_SNAPSHOT_AUDIT.md)
+- [Machine-readable aggregate evidence](docs/data/snapshot-audit.json)
+- [Executable offline audit, mapping, profiling and baseline tools](tools/lazzybee/README.md)
+
+Raw database/content and record-level mappings remain private. Existing corpus-size targets and calibration requirements below are design/history, not evidence that this snapshot already satisfies them.
+
 > 🎯 **For Implementation & Production Architecture:** See [ROADMAP_ARCHITECTURE.md](ROADMAP_ARCHITECTURE.md) for the executive blueprint, system architecture, decoupled modules, and team roadmap approved by the Strategic Advisor.
 
 Báo cáo được cập nhật theo từng iteration của Deli Deep. Các claim có nguồn được kiểm tra theo từng artifact; riêng trang Preply trong callback này vẫn có endpoint trả HTTP 403 nên các phần chưa xác minh được giữ dưới dạng gap. Phương pháp Preply được đối chiếu qua bản proxy khi fetch được và luôn được ghi rõ là nguồn vendor/provisional khi chưa có calibration độc lập.

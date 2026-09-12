@@ -1,0 +1,22 @@
+test_absent_response_withholds_count (test_baseline.BaselineTests.test_absent_response_withholds_count) ... ok
+test_all_wrong_sample_does_not_imply_zero_upper_bound (test_baseline.BaselineTests.test_all_wrong_sample_does_not_imply_zero_upper_bound) ... ok
+test_census_has_zero_sampling_uncertainty (test_baseline.BaselineTests.test_census_has_zero_sampling_uncertainty) ... ok
+test_duplicate_selection_rejected (test_baseline.BaselineTests.test_duplicate_selection_rejected) ... ok
+test_exhaustive_adaptive_quota_estimator_and_interval (test_baseline.BaselineTests.test_exhaustive_adaptive_quota_estimator_and_interval) ... ok
+test_extra_unpresented_response_rejected (test_baseline.BaselineTests.test_extra_unpresented_response_rejected) ... ok
+test_sampling_is_reproducible_disjoint_and_preserves_quotas (test_baseline.BaselineTests.test_sampling_is_reproducible_disjoint_and_preserves_quotas) ... ok
+test_timeout_withholds_count (test_baseline.BaselineTests.test_timeout_withholds_count) ... ok
+test_zero_inclusion_remainder_rejected (test_baseline.BaselineTests.test_zero_inclusion_remainder_rejected) ... ok
+test_profiles_json_and_html_hints_without_exporting_text (test_profile.ProfileTests.test_profiles_json_and_html_hints_without_exporting_text) ... ok
+test_audit_counts_without_modifying_or_exporting_personal_data (test_solution.OfflineSolutionTests.test_audit_counts_without_modifying_or_exporting_personal_data) ... ok
+test_baseline_cli_returns_design_score_not_latent_vocabulary (test_solution.OfflineSolutionTests.test_baseline_cli_returns_design_score_not_latent_vocabulary) ... ok
+test_index_output_never_overwrites_existing_file (test_solution.OfflineSolutionTests.test_index_output_never_overwrites_existing_file) ... ok
+test_missing_database_does_not_create_file (test_solution.OfflineSolutionTests.test_missing_database_does_not_create_file) ... ok
+test_view_is_not_executed_as_vocabulary (test_solution.OfflineSolutionTests.test_view_is_not_executed_as_vocabulary) ... ok
+test_wordnet_candidates_never_claim_automatic_sense_match (test_solution.OfflineSolutionTests.test_wordnet_candidates_never_claim_automatic_sense_match) ... ok
+test_wrong_schema_is_rejected (test_solution.OfflineSolutionTests.test_wrong_schema_is_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 1.850s
+
+OK

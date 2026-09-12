@@ -1,5 +1,7 @@
 # SAMPLING_AND_ESTIMATION_SPEC.md
 
+> **Source-data integration gate:** [LazzyBee snapshot evidence](../data/LAZZYBEE_SNAPSHOT_AUDIT.md) supplies 3,885 source records and stored levels 1–7, not validated frequency strata or a representative item bank. Freeze reviewed units and document bank-construction probabilities before extrapolation. The offline residual-HT reference covers a fully assessed frame, not a separate sampled-bank estimation stage.
+
 > **Project:** `vocabulary-research` — `itpro-vn/vocabulary-research`  
 > **Specification ID:** P0.2  
 > **Status:** Proposed normative specification  

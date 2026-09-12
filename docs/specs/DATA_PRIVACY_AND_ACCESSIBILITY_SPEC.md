@@ -1,5 +1,7 @@
 # DATA_PRIVACY_AND_ACCESSIBILITY_SPEC.md
 
+> **Actual source handling:** [The provided snapshot](../data/LAZZYBEE_SNAPSHOT_AUDIT.md) includes columns for notes and learning progress. The audit used allowlisted content columns and aggregate schema/counts; no notes, progress values or system values were published. Keep raw content/mappings private, verify dictionary-content rights separately, and sanitize imported HTML before any frontend rendering. Content availability does not imply research consent or redistribution permission.
+
 > **Dự án:** `vocabulary-research`  
 > **Repository:** `itpro-vn/vocabulary-research`  
 > **Mã đặc tả:** P0.7  

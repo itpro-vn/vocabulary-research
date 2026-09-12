@@ -1,5 +1,7 @@
 # P0.6 — Pilot Calibration & Empirical Validation Protocol
 
+> **Pilot input now available:** [The audited source snapshot](../data/LAZZYBEE_SNAPSHOT_AUDIT.md) provides 3,885 content records. All have nonempty learning fields, but 3,798 explanations mention their target headword. Review/rewrite items for the selected assessment format before pilot use. Stored levels and HTML CEFR/POS clues are not calibrated difficulty or reviewed target-sense labels; human response data is still absent.
+
 **Dự án:** `vocabulary-research`  
 **Repository:** `itpro-vn/vocabulary-research`  
 **Tệp:** `PILOT_CALIBRATION_PROTOCOL.md`  

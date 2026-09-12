@@ -1,0 +1,18 @@
+# Raw/private lexical data and per-record review outputs must stay local.
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.sqlite3
+private*/
+**/private-*/
+data/raw/
+**/candidates*.jsonl
+**/review-queue*.csv
+
+# Local execution environments and generated caches.
+.venv/
+__pycache__/
+*.pyc

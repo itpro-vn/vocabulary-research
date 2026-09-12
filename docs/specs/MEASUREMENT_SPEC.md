@@ -1,5 +1,7 @@
 # MEASUREMENT_SPEC.md
 
+> **Source-data evidence:** [Actual LazzyBee snapshot audit](../data/LAZZYBEE_SNAPSHOT_AUDIT.md): 3,885 source headword records are available privately. They are not yet a reviewed lemma-POS/target-sense universe. The 20,000-unit target below remains a design decision, not an acquired dataset; no scope change is silently approved by this audit.
+
 > **Dự án:** `itpro-vn/vocabulary-research`  
 > **Mã đặc tả:** P0.1 — Measurement Contract  
 > **Phiên bản:** 1.0.0-draft  
